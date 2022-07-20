@@ -51,6 +51,16 @@
     </div>
 {/if}
 
+<div style="height: 100px" />
+
+<footer style="width: 100%; text-align:center">
+    <a href="http://beian.miit.gov.cn/" target="_blank">
+        <span>鲁ICP备2020034769号</span>
+    </a>
+    |
+    <a href="https://github.com/Danny-Yxzl/icode-v2"> GitHub </a>
+</footer>
+
 <style>
     button {
         margin: 5px;
