@@ -1,0 +1,6 @@
+/front/public/build/
+
+.DS_Store
+node_modules
+
+data.json
