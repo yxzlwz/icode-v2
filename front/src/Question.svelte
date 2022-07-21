@@ -4,7 +4,7 @@
     let solves = [];
 
     function update(x) {
-        fetch(`/api/question/${x}/`)
+        fetch(`//127.0.0.1:5000/question/${x}/`)
             .then(res => res.json())
             .then(res => {
                 res.sort((a, b) => {
@@ -45,12 +45,33 @@
             return;
         }
         localStorage.setItem("name", new_answer.name);
-        fetch(`/api/question/${question}/`, {
+        fetch(`//127.0.0.1:5000/question/${question}/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(new_answer),
+        })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                update(question);
+            });
+    }
+
+    let del_ts = "";
+    function del() {
+        if (!del_ts) {
+            return;
+        }
+        fetch(`//127.0.0.1:5000/question/${question}/`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                ts: parseFloat(del_ts),
+            }),
         })
             .then(res => res.json())
             .then(res => {
@@ -116,6 +137,19 @@
             提交
         </button>
     </form>
+    <hr class="my-4" />
+    <input
+        bind:value={del_ts}
+        placeholder="请输入要删除的答案ID"
+        class="border focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent my-2"
+    />
+    <button
+        class="bg-blue-500 hover:bg-blue-700 rounded-md py-1 px-2 text-base text-white"
+        type="button"
+        on:click={del}
+    >
+        删除答案
+    </button>
 </div>
 
 <style>

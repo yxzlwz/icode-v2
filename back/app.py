@@ -34,6 +34,16 @@ def add_answer(question_id):
     return jsonify({'status': 'ok'})
 
 
+@app.route('/question/<question_id>/', methods=['DELETE'])
+def del_question(question_id):
+    ts = request.json['ts']
+    for i in range(len(questions[question_id])):
+        if questions[question_id][i]['time'] == ts:
+            del questions[question_id][i]
+            return jsonify({'status': 'ok'})
+    return jsonify({'status': 'not_found'})
+
+
 if __name__ == '__main__':
     with open(f'{thisDir}/data.json', 'r', encoding='utf-8') as f:
         questions = json.load(f)
