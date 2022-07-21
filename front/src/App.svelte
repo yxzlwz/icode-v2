@@ -7,6 +7,7 @@
         selected = 0,
         array = [];
     $: {
+        if (questions) get_stars_info(questions);
         let i = 1;
         array = Array.from({ length: questions }, a => {
             return i++;
@@ -16,6 +17,21 @@
     function change_question(i) {
         selected = i;
         console.log(selected);
+    }
+
+    let stars_info = {};
+    function get_stars_info(x) {
+        fetch(`//127.0.0.1:5000/question/?length=${x}`, {
+            method: "GET",
+        })
+            .then(res => res.json())
+            .then(res => {
+                stars_info = res;
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 </script>
 
@@ -34,15 +50,30 @@
         type="number"
         class="border focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
         min="10"
-        max="100"
+        max="1000"
         on:blur={localStorage.setItem("questions", questions)}
     />
+    <button
+        class="bg-blue-500 hover:bg-blue-700 rounded-md py-1 px-2 text-base text-white"
+        on:click={get_stars_info(questions)}
+    >
+        刷新题目星星信息
+    </button>
 </div>
+<p class="text-lg m-4">
+    <span>没有星星</span>
+    <span class="bg-yellow-400">1颗星星</span>
+    <span class="bg-yellow-300">2颗星星</span>
+    <span class="bg-green-300">3颗星星</span>
+</p>
 <div class="flex flex-row flex-wrap m-4">
     {#each array as i}
         <button
             on:click={change_question(i)}
             class="shadow-md min-w-75 min-h-50 rounded-lg border-transparent font-bold text-lg flex-1"
+            class:bg-green-300={stars_info[i] === 3}
+            class:bg-yellow-300={stars_info[i] === 2}
+            class:bg-yellow-400={stars_info[i] === 1}
         >
             {i}
         </button>
