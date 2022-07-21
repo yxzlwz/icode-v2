@@ -19,11 +19,15 @@
     }
 </script>
 
-<h1 class="text-3xl font-bold text-center">ICode总决赛</h1>
+<h1 class="text-3xl font-bold text-center">ICode代码共享</h1>
 <br />
 <hr />
 <br />
 <div class="text-lg m-4">
+    <p>
+        使用说明：由于不知道国赛有几道题因此没有写死题目数量，首先设置题目数量。贡献时请填写姓名、星星数和源代码。复制代码时建议选择“复制混淆后代码”以防查重；但是由于测试不充分，可能对于一些情况，混淆后的代码出现问题，因此留有“复制源代码”按钮备用。
+    </p>
+    <br />
     <span>请输入题目数量：</span>
     <input
         bind:value={questions}
