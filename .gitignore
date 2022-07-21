@@ -1,4 +1,5 @@
 /front/public/build/
+__pycache__
 
 .DS_Store
 node_modules

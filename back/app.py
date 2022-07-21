@@ -2,19 +2,16 @@ import json
 import os
 import time
 
-from flask import Flask, jsonify, redirect, request
+from flask import Flask, jsonify, request
 from flask_cors import CORS
+
+from hunxiao import hunxiao
 
 app = Flask(__name__)
 CORS(app)
 thisDir = os.path.dirname(os.path.abspath(__file__))
 
 questions = {}
-
-
-def hunxiao(code):
-    # TODO
-    return code
 
 
 @app.route('/question/<question_id>/')
