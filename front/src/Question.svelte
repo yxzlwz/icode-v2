@@ -64,8 +64,8 @@
         if (!del_ts) {
             return;
         }
-        fetch(`/api/question/${question}/`, {
-            method: "DELETE",
+        fetch(`/api/question/${question}/del/`, {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
