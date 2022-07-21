@@ -48,7 +48,7 @@ def add_answer(question_id):
 
 @app.route('/question/<question_id>/del/', methods=['POST'])
 def del_question(question_id):
-    ts = request.json['ts']
+    ts = str(request.json['ts'])
     for i in range(len(questions[question_id])):
         if questions[question_id][i]['time'] == ts:
             del questions[question_id][i]
