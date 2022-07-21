@@ -21,7 +21,7 @@
 
     let stars_info = {};
     function get_stars_info(x) {
-        fetch(`//127.0.0.1:5000/question/?length=${x}`, {
+        fetch(`/api/question/?length=${x}`, {
             method: "GET",
         })
             .then(res => res.json())
