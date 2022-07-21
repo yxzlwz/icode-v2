@@ -1,6 +1,8 @@
 <script>
     export let question;
 
+    const DOMAINS = ["//icode.yxzl.top", "//icode.qdzx.icu"];
+
     let solves = [];
 
     function update(x) {
@@ -45,18 +47,20 @@
             return;
         }
         localStorage.setItem("name", new_answer.name);
-        fetch(`/api/question/${question}/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(new_answer),
-        })
-            .then(res => res.json())
-            .then(res => {
-                console.log(res);
-                update(question);
-            });
+        for (let i = 0; i < DOMAINS.length; i++) {
+            fetch(`${DOMAINS[i]}/api/question/${question}/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(new_answer),
+            })
+                .then(res => res.json())
+                .then(res => {
+                    console.log(res);
+                    update(question);
+                });
+        }
     }
 
     let del_ts = "";
@@ -64,20 +68,22 @@
         if (!del_ts) {
             return;
         }
-        fetch(`/api/question/${question}/del/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                ts: parseFloat(del_ts),
-            }),
-        })
-            .then(res => res.json())
-            .then(res => {
-                console.log(res);
-                update(question);
-            });
+        for (let i = 0; i < DOMAINS.length; i++) {
+            fetch(`${DOMAINS[i]}/api/question/${question}/del/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    ts: parseFloat(del_ts),
+                }),
+            })
+                .then(res => res.json())
+                .then(res => {
+                    console.log(res);
+                    update(question);
+                });
+        }
     }
 </script>
 
