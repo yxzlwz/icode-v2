@@ -61,6 +61,7 @@
                     update(question);
                 });
         }
+        localStorage.setItem("updated_at", Date.now());
     }
 
     let del_ts = "";
@@ -84,6 +85,7 @@
                     update(question);
                 });
         }
+        localStorage.setItem("updated_at", Date.now());
     }
 </script>
 

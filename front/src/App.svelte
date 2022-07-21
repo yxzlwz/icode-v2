@@ -33,6 +33,18 @@
                 console.log(err);
             });
     }
+
+    if (!localStorage.getItem("updated_at"))
+        localStorage.setItem("updated_at", Date.now());
+    let updated_at = localStorage.getItem("updated_at");
+    setInterval(() => {
+        if (updated_at !== localStorage.getItem("updated_at")) {
+            setTimeout(() => {
+                get_stars_info(questions);
+            }, 500);
+            updated_at = localStorage.getItem("updated_at");
+        }
+    }, 500);
 </script>
 
 <h1 class="text-3xl font-bold text-center">ICode代码共享</h1>
@@ -41,7 +53,9 @@
 <br />
 <div class="text-lg m-4">
     <p>
-        使用说明：由于不知道国赛有几道题因此没有写死题目数量，首先设置题目数量。贡献时请填写姓名、星星数和源代码。复制代码时建议选择“复制混淆后代码”以防查重；但是由于测试不充分，可能对于一些情况，混淆后的代码出现问题，因此留有“复制源代码”按钮备用。<b>服务器未做安全防护和备份容灾，请勿随意乱点页面上的任意按钮，服务器宕机对谁都没好处！</b>
+        使用说明：由于不知道国赛有几道题因此没有写死题目数量，首先设置题目数量。贡献时请填写姓名、星星数和源代码。复制代码时建议选择“复制混淆后代码”以防查重；但是由于测试不充分，可能对于一些情况，混淆后的代码出现问题，因此留有“复制源代码”按钮备用。<b
+            >服务器未做安全防护和备份容灾，请勿随意乱点页面上的任意按钮，服务器宕机对谁都没好处！</b
+        >
     </p>
     <br />
     <span>请输入题目数量：</span>
