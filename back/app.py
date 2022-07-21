@@ -71,4 +71,4 @@ if __name__ == '__main__':
     for i, j in questions.items():
         for k in j:
             questions_stars[i] = max(questions_stars[i], k['stars'])
-    app.run(debug=False)
+    app.run(debug=False, port=5555)
