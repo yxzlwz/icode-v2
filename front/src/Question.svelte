@@ -4,7 +4,7 @@
     let solves = [];
 
     function update(x) {
-        fetch(`//127.0.0.1:5000/question/${x}/`)
+        fetch(`/api/question/${x}/`)
             .then(res => res.json())
             .then(res => {
                 res.sort((a, b) => {
@@ -45,7 +45,7 @@
             return;
         }
         localStorage.setItem("name", new_answer.name);
-        fetch(`//127.0.0.1:5000/question/${question}/`, {
+        fetch(`/api/question/${question}/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -64,7 +64,7 @@
         if (!del_ts) {
             return;
         }
-        fetch(`//127.0.0.1:5000/question/${question}/`, {
+        fetch(`/api/question/${question}/`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
