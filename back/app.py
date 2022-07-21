@@ -38,7 +38,6 @@ def add_answer(question_id):
     if question_id not in questions:
         questions[question_id] = []
     data = request.json
-    data['time'] = time.time()
     questions[question_id].append(data)
     questions_stars[question_id] = max(questions_stars[question_id],
                                        data['stars'])

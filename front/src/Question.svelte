@@ -40,6 +40,7 @@
         name: localStorage.getItem("name", ""),
         stars: 0,
         code: "",
+        time: "",
     };
     function submit() {
         if (new_answer.stars < 1 || new_answer.stars > 3) {
@@ -47,6 +48,7 @@
             return;
         }
         localStorage.setItem("name", new_answer.name);
+        new_answer.time = String(Date.now());
         for (let i = 0; i < DOMAINS.length; i++) {
             fetch(`${DOMAINS[i]}/api/question/${question}/`, {
                 method: "POST",
