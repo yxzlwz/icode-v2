@@ -76,7 +76,7 @@
 </div>
 <p class="text-lg m-4">
     <span>没有星星</span>
-    <span class="bg-yellow-400">1颗星星</span>
+    <span class="bg-yellow-600">1颗星星</span>
     <span class="bg-yellow-300">2颗星星</span>
     <span class="bg-green-300">3颗星星</span>
 </p>
@@ -87,7 +87,7 @@
             class="shadow-md min-w-75 min-h-50 rounded-lg border-transparent font-bold text-lg flex-1"
             class:bg-green-300={stars_info[i] === 3}
             class:bg-yellow-300={stars_info[i] === 2}
-            class:bg-yellow-400={stars_info[i] === 1}
+            class:bg-yellow-600={stars_info[i] === 1}
         >
             {i}
         </button>
