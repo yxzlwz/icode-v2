@@ -19,7 +19,7 @@ def _add_space(c):
 
 
 def process_variables(code):
-    chars = r'@-=+()*&^%!<>{}[]\|?/;:,.'  # 符号
+    chars = r'@-=+()*&^%!<>{}[]\|?/;:,. '  # 符号
 
     words = []  # 所有的单词分割后
     all = []  # 所有的字符块分割后
