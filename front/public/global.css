@@ -71,3 +71,7 @@ input,
 textarea {
     background-color: black;
 }
+
+pre {
+    color: rgb(57, 57, 57);
+}
